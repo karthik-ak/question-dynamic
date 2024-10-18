@@ -1,0 +1,10 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div *ngFor="let group of questionGroups">
+      <h3>{{ group.title }}</h3>
+      <div *ngFor="let question of group.questions">
+        <app-question [question]="question" [form]="form"></app-question>
+      </div>
+    </div>
+    <button type="submit" [disabled]="!form.valid">Submit</button>
+  </form>
+  

@@ -1,0 +1,16 @@
+<div [formGroup]="form">
+    <label [attr.for]="question.key">{{ question.label }}</label>
+  
+    <ng-container *ngIf="isTextbox">
+      <input [formControlName]="question.key" [type]="textboxType">
+    </ng-container>
+  
+    <ng-container *ngIf="isDropdown">
+      <select [formControlName]="question.key">
+        <option *ngFor="let option of dropdownOptions" [value]="option.key">{{ option.value }}</option>
+      </select>
+    </ng-container>
+  
+    <div *ngIf="question.required && form.get(question.key)?.invalid">This field is required.</div>
+  </div>
+  
